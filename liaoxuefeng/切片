@@ -1,0 +1,71 @@
+
+#取list前n项的笨办法
+
+
+L=['Michael','Sarah','Tracy','Bob','Jack']
+r=[] #取出来的东西要在一个list里面
+n=3  #确定要取的是前几项
+for i in range(n):
+    r.append(L[i])   #遍历n,将需要前n项从L中取出放入r中
+print(r)
+
+
+#切片slice
+L=['Michael','Sarah','Tracy','Bob','Jack']
+print(L[0:3])   #从索引0开始取，取到索引3为止，但不包括3   
+#如果第一个索引为0，还可以省略成L[:3]
+
+#倒数切片
+L[-2:]
+>>>['Bob', 'Jack']
+
+
+#创建从0到99的数列
+L=list(range(100))
+print(L)
+print(L[:10])   #取出从0到9
+print(L[:10:2]) #每2个取一个
+print(L[::5]) #所有数每5个取一个
+print（L[:]） #复制原list
+
+
+#联系利用切片操作，实现一个trim()函数，去除字符串首尾的空格，注意不要调用str的strip()方法：
+
+#我的错误办法
+def trim(s):
+    if lens(s)==0:
+        return s
+    if s[0]==' ':
+        return s[1:]
+    elif s[-1]=' ':
+        return s[:-1]
+    else:
+        return s
+        
+#正确办法
+def trim(s):
+    if len(s)==0:
+        return s              #首先判断字符串的长度是否为0，如果是，直接返回字符串
+    while s[0]==' ':
+        s=s[1:]
+        if len(s)==0:
+            return s           #循环判断字符串的首部是否有空格，如果有，去掉空格，再判断字符串的长度是否为0，如果是，直接返回字符串
+    while s[-1]==' ':
+        s=s[:-1]
+        if len(s)==0:
+            return s           #循环判断字符串的尾部是否有空格，如果有，去掉空格，再判断字符串的长度是否为0，如果是，直接返回字符串
+    return s                   #返回字符串
+if trim(' hello')!='hello':
+    print('测试失败！')
+elif trim('  hello') != 'hello':
+    print('测试失败!')
+elif trim('  hello  ') != 'hello':
+    print('测试失败!')
+elif trim('  hello  world  ') != 'hello  world':
+    print('测试失败!')
+elif trim('') != '':
+    print('测试失败!')
+elif trim('    ') != '':
+    print('测试失败!')
+else:
+    print('测试成功!')
