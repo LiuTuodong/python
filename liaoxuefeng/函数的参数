@@ -1,0 +1,48 @@
+def power(x,n=2):#必选参数在前，默认参数在后
+    s=1
+    while n>0:
+        n=n-1
+        s=s*x
+    return s
+print(power(5))
+
+
+
+def enroll(name,gender,age=6,city='Beijing'):
+    print('name:',name)
+    print('gender:',gender)
+    print('age:',age)
+    print('city:',city)
+enroll('sarah','F')
+
+
+def add_end(L=None):
+    if L is None:
+        L = []
+    L.append('END')
+    return L
+    
+#不可变参数
+def calc(numbers):
+    sum = 0
+    for n in numbers:
+        sum = sum + n * n
+    return sum
+#调用
+>>> calc([1, 2, 3])
+14
+>>> calc((1, 3, 5, 7))
+84
+
+
+#可变参数
+def calc(*numbers):
+    sum = 0
+    for n in numbers:
+        sum = sum + n * n
+    return sum
+#调用
+>>> calc(1, 2)
+5
+>>> calc()
+0
