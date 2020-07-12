@@ -1,0 +1,27 @@
+d={'a':1,'b':2,'c':3}
+for key in d:
+    print(key)
+for value in d.values():
+    print(value)
+for k,v in d.items():
+    print(k,v)
+
+
+#字符串也可以是迭代对象，所以也可以用for循环
+for ch in 'ABC':
+    print(ch)
+
+#判断一个对象是否是可迭代对象
+#通过collections模块的Iterable类型判断
+from collections import Iterable
+isinstance('abc',Iterable)#str是否可迭代
+True
+isinstance([1,2,3], Iterable) # list是否可迭代
+True
+isinstance(123, Iterable) # 整数是否可迭代
+False
+
+
+#引用两个变量
+for x, y in [(1, 1), (2, 4), (3, 9)]:
+    print(x,y)
